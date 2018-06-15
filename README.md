@@ -1,2 +1,2 @@
 # TransformVott2CNTKDataset
-Transform Vott2 datasaet to CNTK dataset
+Transform Vott datasaet to CNTK dataset
