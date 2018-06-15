@@ -10,6 +10,7 @@ namespace TransformVott2CNTKDataset
     class Program
     {
         private static List<string> tags = new List<string>() { "__background__" };
+        private static Encoding utf8WithoutBom = new UTF8Encoding(false);
 
         static void Main(string[] args)
         {
@@ -63,10 +64,10 @@ namespace TransformVott2CNTKDataset
                     }
                     roi_file_txt.Add(roiText.ToString());
                 }
-                File.WriteAllLines(Path.Combine(baseDir, output[i] + "_img_file.txt"), img_file_txt, Encoding.UTF8);
-                File.WriteAllLines(Path.Combine(baseDir, output[i] + "_roi_file.txt"), roi_file_txt, Encoding.UTF8);
+                File.WriteAllLines(Path.Combine(baseDir, output[i] + "_img_file.txt"), img_file_txt, utf8WithoutBom);
+                File.WriteAllLines(Path.Combine(baseDir, output[i] + "_roi_file.txt"), roi_file_txt, utf8WithoutBom);
             }
-            File.WriteAllLines(Path.Combine(baseDir, "class_map.txt"), tags.Select((t, index) => t + "\t" + index), Encoding.UTF8);
+            File.WriteAllLines(Path.Combine(baseDir, "class_map.txt"), tags.Select((t, index) => t + "\t" + index), utf8WithoutBom);
         }
     }
 }
